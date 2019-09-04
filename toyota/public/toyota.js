@@ -6,7 +6,7 @@ var typeOfCustomer = document.getElementById('customerType');
 var partNumber = document.getElementById('partNumber');
 var descriptn = document.getElementById('descrptn');
 var partPrice = document.getElementById('pricePerPart');
-var quantityEl = document.getElementById('quantity');
+var quantityEl = document.getElementById('partquantity');
 var containerSize = document.querySelectorAll('containerSize');
 var compute = document.getElementById('submit');
 var ship = document.querySelectorAll('.shipping');
@@ -15,6 +15,9 @@ var ursid = document.getElementById('smid');
 var namereq = document.getElementById('smname');
 var statereq = document.getElementById('smstate');
 var ups = document.getElementById('ups');
+var fedexair = document.getElementById('fedexair');
+var fedexgr = document.getElementById('fedexgr');
+var postal= document.getElementById('postalair')
 // Validation measure for specific input fields
 const customId = /^[0-9]{3,7}$/;
 const name = /^[a-zA-Z]{5,25}$/;
@@ -75,30 +78,26 @@ compute.addEventListener("click", (event)=>{
         else{
             quantityEl.style.border="1px solid red";
         }
-        if(ship.checked){
-            dispship.innerHTML="";
-        }
-        else{
-            dispship.innerHTML="Please select shipping method";
-        }
+         
      };
      validate();
 
-     const costCalc = ()=>{
-        let price = partPrice.value;
-        let mbararebb = 5/100;
-        let klaTax = 10 / 100;
-        let quantity = quantityEl.value;
-        let cost = (price * quantity).toFixed(2);   
-        
-// Calculating taxrate for the states 
-    var taxRate= ()=>{
+     let mbararebb = parseFloat(5/100).toFixed(2);
+     let klaTax = parseFloat(10 / 100).toFixed(2);
+     var  quantity =quantityEl.value;
+     let price = partPrice.value;
+     var cost = parseFloat(price * quantity).toFixed(2);
+
+
+    // Calculating taxrate for the states 
+    var entebMbaraTax =  mbararebb * cost;
+     var taxRate= ()=>{
         // Mbarara and Entebbe taxrate calculation
          if(customerState.value === "MBR" || "EBB")
          { 
              if(typeOfCustomer.checked)
              {
-                mbararebb * cost;
+                entebMbaraTax;
              }
              else{
                 cost; 
@@ -108,22 +107,50 @@ compute.addEventListener("click", (event)=>{
         {
             if(typeOfCustomer.checked)
             {
-                klaTax * cost;
+                klaTax;
             }
             else{
                 cost;
             }
 
         }
-        else{
-            cost;
-        }
-    }
+        
+    };
     taxRate();
-}
 
-     costCalc();
-     
+    var shiphandling = ()=>{
+        if(ups.checked && containerSize.checked){
+            7.00 * (quantity * 5.00);
+        }
+        else{
+            7.00 * quantity;
+        }
+        if(fedexair.checked && containerSize.checked){
+            12.00 * (quantity * 5.00);
+        }
+        else{
+            12.00 * quantity;
+        }
+        if(fedexgr.checked && containerSize.checked){
+            9.25 * (quantity * 5.00);
+        }
+        else{
+            9.25 * quantity;
+        }
+        if(postal.checked && containerSize.checked){
+            8.50 * (quantity * 5.00);
+        }
+        else{
+            8.50 * quantity;
+        }
+    };
+    shiphandling();
+    
+var total = cost + taxRate(); + shiphandling();
+ console.log(total);
+ console.log(shiphandling);
 });
-console.log('connecting....');
+
+
+
 

@@ -19,7 +19,7 @@
             <table cellpadding="4" >
                 <tr>
                     <td style="width:30% ;">Customer ID:</td>
-                    <td><input type="text" id="customerId"name="customerId" style="width:40%;height:25px;border:1px;"><small class="small" id="smid"></small></td>
+                    <td><input autofocus type="text" id="customerId"name="customerId" style="width:40%;height:25px;border:1px;"><small class="small" id="smid"></small></td>
                 </tr> 
                 <tr>
                   <td>Name:</td>   
@@ -46,7 +46,7 @@
                         <td style="width:50%;height:55px;"> <input class = "shipping"type="radio" id="postalair" name="shipping">
                             UPS Postal Air</td>
                         <td>
-                            <input class = "shipping"type="radio" fedexair name="shipping">Fed Ex Air
+                            <input class = "shipping"type="radio" id="fedexair" name="shipping">Fed Ex Air
                         </td>
                     </tr>
                     <tr>
@@ -73,7 +73,7 @@
                     <tr>
                         <td>Price per part:</td>
                         <td><input id="pricePerPart" type="text" style="width:25%;height:25px;border:1px;"> 
-                             Quality:<input id="quantity"type="text" style="width:34%;height:25px;border:1px;"></td>
+                             Quantity:<input id="partquantity"type="text" style="width:34%;height:25px;border:1px;"></td>
                     </tr>  
                     <tr>
                         <td></td>
@@ -114,7 +114,7 @@
             <table>
                 <tr>
                     <td style= ><input id="submit" class="btn valuebuttons" type="submit" name="submit" value="Compute"></td>
-                    <td style=><input class="btn valuebuttons" type="button" name="newOrder" value="New Order"></td> 
+                    <td style=><input class="btn valuebuttons" type="button" onclick="reset();" name="newOrder" value="New Order"></td> 
                 </tr>
             </table>    
         </div>
