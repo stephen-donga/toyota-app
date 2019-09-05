@@ -115,7 +115,7 @@ compute.addEventListener("click", (event)=>{
                 shipMethod = "ups";
               }
             else{
-                ship = quantity * 7.00;
+                ship = parseFloat(quantity * 7.00);
                 shipMethod = "ups";
             }
           
@@ -145,7 +145,7 @@ compute.addEventListener("click", (event)=>{
             shipMethod = "fedexgr";
             }
           else{
-            ship = (quantity * 9.25).toFixed(2);
+            ship = parse(quantity * 9.25).toFixed(2);
             shipMethod = "fedexgr";
             }
           }
@@ -153,8 +153,10 @@ compute.addEventListener("click", (event)=>{
            ship = 0;
            shipMethod ="none";
         }
-        console.log(ship);
-        console.log(shipMethod);
+        shipphandle.value = `$${ship}`;
+        
+        const total = cost + tax + ship;
+        document.getElementById('toatlcost').value = `$${total}`;
 
 
 
