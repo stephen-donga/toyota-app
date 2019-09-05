@@ -10,6 +10,7 @@
      
  </head>
  <body>
+     <h3>A TOYOTA CUSTOMER MAIL ORDER</h3>
      <!-- Assigning validatefunction to the html-form -->
      <form onsubmit="validate();" action="#" method="POST">
      <div class="container  containerone">
@@ -39,7 +40,7 @@
                 <legend>Shipping</legend>
                 <table >
                     <tr>
-                        <td style="width:50%;height:55px;"><input class = "shipping"type="radio" id="ups" name="shipping">UPS</td>
+                        <td style="width:50%;height:55px;"><input class = "shipping"type="radio" id="ups" name="shipping" checked>UPS</td>
                         <td><input class = "shipping"type="radio" id="fedexgr" name="shipping">Fed Ex Ground</td>
                     </tr> 
                     <tr>
@@ -93,19 +94,19 @@
                 <table cellpadding="4">
                 <tr>
                     <td style="width:65%;">Cost:</td>
-                    <td> <input type="text" style=" width:100%;height:25px;border:1px;"></td>
+                    <td> <input id="salescost" type="text"  style=" width:100%;height:25px;border:1px;"disabled></td>
                 </tr>
                 <tr>
                     <td >Sales Tax:</td>
-                    <td><input type="text" style=" width:100%;height:25px;border:1px;"></td>
+                    <td><input id="taxsales" type="text" style=" width:100%;height:25px;border:1px;"disabled></td>
                 </tr>
                 <tr>
                     <td>Shipping & Handling:</td>
-                    <td><input type="text" style=" width:100%;height:25px;border:1px;"></td>
+                    <td><input type="text" id="shiphandling" style=" width:100%;height:25px;border:1px;"disabled></td>
                 </tr>
                 <tr>
                     <td>Total:</td>
-                    <td><input type="text" style=" width:100%;height:25px;border:1px;"></td>
+                    <td><input type="text" style=" width:100%;height:25px;border:1px;" disabled></td>
                 </tr>
             </table>
             </fieldset>
@@ -122,14 +123,14 @@
             <table>
                 <tr>
                     <td style="width: 90%;"> </td>
-                    <td><input class="btn" id="lastbutton" type="button" name="exit" value="Exit"></td>
+                    <td><input class="btn" id="lastbutton" type="button" name="exit" onclick="window.close();"value="Exit"></td>
                 </tr>
             </table>
         </div>
      </div>
     
     </form>
-
+<h3> By Stephen Edonga</h3>
     <script type="text/javascript" src="toyota.js"></script>
  </body>
  </html>

@@ -1,9 +1,10 @@
 const express = require('express');
 const parser = require('body-parser');
-const crypto = reqiure('crypto');
-const msql = require('mysql');
-const session = require('express-session');
-
+const mysql = require('mysql');
+const morgan = require('morgan');
+var path = require('path');
+var fs = require('fs')
+ 
 const app = express();
 
 app.use(express.static('./public'));
@@ -12,22 +13,27 @@ app.use(morgan('short'));
 
 app.use(parser.urlencoded({extended:false}));
 
-const connect = mysql.createConnection({
+var connection =  mysql.createConnection({
     host:'localhost',
     user:'root',
-    database:'customers',
-    password:'password'
+    password:'password',
+    database:'customers'
 });
-
+connection.connect(function(error){
+    if(!!error){
+        console.log('Error');
+    }
+    else{
+        console.log('Database is connected');
+    }
+})
 app.post('userdetails',(req, res)=>{
     const user = req.body.customerId;
-        user = req.body.name;
-        user = req.body.state;
+         user = req.body.name;
+         user = req.body.state;
 
 
-
-
-        const queryString = "INSERT INTO customers {costomerId,name,state} VALUES(?,?,?,?,?,?)"
+        const queryString = "INSERT INTO product_purshase{costomerId,name,state} VALUES(?,?,?)"
         connection.query(queryString, []);
         res.end();
 });
