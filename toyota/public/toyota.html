@@ -12,7 +12,9 @@
  <body>
      <h3>A TOYOTA CUSTOMER MAIL ORDER</h3>
      <!-- Assigning validatefunction to the html-form -->
-     <form onsubmit="validate();" action="#" method="POST">
+     <form onsubmit="validate();" action="userdetails" method="POST">
+
+        <!-- A section for the customers' details -->
      <div class="container  containerone">
         <div class="customer customcolor">
         <fieldset class="fieldsetone">
@@ -35,13 +37,15 @@
             </table>
         </fieldset>
         </div>
+
+        <!-- A section for the customers' shipping -->
         <div class="shipping customcolor">
             <fieldset class="fieldsetone">
                 <legend>Shipping</legend>
                 <table >
                     <tr>
                         <td style="width:50%;height:55px;"><input class = "shipping"type="radio" id="ups" name="shipping" checked>UPS</td>
-                        <td><input class = "shipping"type="radio" id="fedexgr" name="shipping">Fed Ex Ground</td>
+                        <td><input class = "shipping" id="fedexgr" type="radio"  name="shipping">Fed Ex Ground</td>
                     </tr> 
                     <tr>
                         <td style="width:50%;height:55px;"> <input class = "shipping"type="radio" id="postalair" name="shipping">
@@ -57,9 +61,13 @@
                 </table>
             </fieldset>
         </div>
+
+        <!-- A section for the partsand the numder of spares ordered by the customer -->
         <div class="customcolor">
             <fieldset class="fieldsettwo">
                 <legend>Part Ordered</legend>
+
+                <!-- Atable containing the details of the parts and the Number -->
                 <table cellpadding="4">
                     <tr>
                         <td style="width:30%">Part Number:</td>
@@ -88,9 +96,13 @@
                 
             </fieldset >
         </div>
+
+        <!-- Asection for the results computed  -->
         <div class="customcolor">
             <fieldset class="fieldsettwo">
                 <legend>Output</legend>
+
+                <!-- A table containing the results -->
                 <table cellpadding="4">
                 <tr>
                     <td style="width:65%;">Cost:</td>
@@ -111,6 +123,8 @@
             </table>
             </fieldset>
         </div>
+
+        <!-- Asection for the buttons -->
         <div class="buttons">
             <table>
                 <tr>
@@ -130,7 +144,8 @@
      </div>
     
     </form>
-<h3> By Stephen Edonga</h3>
+
+<h3> Designed by Stephen Edonga</h3><br> <h3>&copy;Copyright 2019</h3>
     <script type="text/javascript" src="toyota.js"></script>
  </body>
  </html>

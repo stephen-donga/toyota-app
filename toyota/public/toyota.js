@@ -15,7 +15,7 @@ var namereq = document.getElementById('smname');
 var statereq = document.getElementById('smstate');
 var ups = document.getElementById('ups');
 var fedexair = document.getElementById('fedexair');
-var fedexgr = document.getElementById('fedexgr');
+var fedexg = document.getElementById('fedexgr');
 var postal= document.getElementById('postalair');
 var shipphandle = document.getElementById("shiphandling");
 // Validation measure for specific input fields
@@ -87,24 +87,28 @@ compute.addEventListener("click", (event)=>{
     if (customerState.value === "KLA") {
         
         if(typeOfCustomer.checked){
-            tax = parseFloat(cost +0).toFixed(2);
+        tax = cost * 0.1;
+
         }
         else{
-        tax = cost * 0.1;
+            tax = parseFloat(cost +0).toFixed(2);
+
     }
       } else if (customerState.value === "EBB" || customerState.value === "MBR") {
         
         if(typeOfCustomer.checked){
-            tax = parseFloat(cost + 0).toFixed(2);
+        tax = cost * 0.05;
+
         }
         else{
-        tax = cost * 0.05;
+            tax = parseFloat(cost + 0).toFixed(2);
+
     }
       } 
       else {
         tax =  parseFloat(cost + 0).toFixed(2);
+        return tax;
       }
-    
      
         document.getElementById('taxsales').value =`$${tax}`;
 
@@ -112,51 +116,53 @@ compute.addEventListener("click", (event)=>{
         if(ups.checked){
             if(container.checked){
                 ship = parseFloat((quantity * 5) * 7.00).toFixed(2);
-                shipMethod = "ups";
+                shipMethod = "UPS";
               }
             else{
                 ship = parseFloat(quantity * 7.00);
-                shipMethod = "ups";
+                shipMethod = "UPS";
             }
           
         }else if(fedexair.checked){
             if(container.checked){
              ship = parseFloat((quantity * 5) * 12.00).toFixed(2);
-             shipMethod = "fedexair";
+             shipMethod = "Fed Ex Air";
              }
             else{
              ship = quantity * 12.00;
-              shipMethod = "fedexair";
+              shipMethod = "Fed Ex Air";
             }
            }
         else if(postalair.checked){
             if(container.checked){
             ship = parseFloat((quantity * 5) * 8.50).toFixed(2);
-            shipMethod = "postalair";
+            shipMethod = "Postal Air";
            }
           else{
             ship = (quantity * 8.50).toFixed(2);
-            shipMethod = "postalair";
+            shipMethod = "Postal Air";
            }
           }
-        else if(fedexgr.checked){
+        else if(fedexg.checked){
           if(container.checked){
             ship = parseFloat((quantity * 5) * 9.25).toFixed(2);
-            shipMethod = "fedexgr";
+            shipMethod = "Fed Ex  Ground";
             }
           else{
-            ship = parse(quantity * 9.25).toFixed(2);
-            shipMethod = "fedexgr";
+            ship = parseFloat(quantity * 9.25).toFixed(2);
+            shipMethod = "Fed Ex  Ground";
             }
           }
         else{
            ship = 0;
            shipMethod ="none";
+           return ship;
         }
         shipphandle.value = `$${ship}`;
         
-        const total = cost + tax + ship;
+        var total =parseFloat((cost + tax) + ship).toFixed(2);
         document.getElementById('toatlcost').value = `$${total}`;
+        console.log( total);
 
 
 
