@@ -46,11 +46,12 @@ app.post('/userdetails',(req, res)=>{
         var userState = req.body.state;
 
 
-        var queryString = "INSERT INTO product_purshase(costomerId,name,state) VALUES(?,?,?)"
+        let queryString = "INSERT INTO product_purshase(costomerId,name,state) VALUES(?,?,?)"; 
         connection.query(queryString, [user,userName,userState])
+       
         connection.end();
         res.end();
-});
-
+    });
+    
 app.listen(8001);
 console.log('Running at port 8001');

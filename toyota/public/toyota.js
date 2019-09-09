@@ -76,14 +76,14 @@ compute.addEventListener("click", (event)=>{
         }
  
     
-         
+         // Initializing varaibles for calculation
             var  quantity =quantityEl.value;
             let price = partPrice.value;
             const cost = parseFloat(price * quantity).toFixed(2);
         
             document.getElementById('salescost').value =`$ ${cost}`;
 
-
+// Identifying a customers state and calculating their specific tax rates
     if (customerState.value === "KLA") {
         
         if(typeOfCustomer.checked){
@@ -112,7 +112,7 @@ compute.addEventListener("click", (event)=>{
      
         document.getElementById('taxsales').value =`$${tax}`;
 
-
+// Checking if a shipping method is checked 
         if(ups.checked){
             if(container.checked){
                 ship = parseFloat((quantity * 5) * 7.00).toFixed(2);
@@ -158,9 +158,12 @@ compute.addEventListener("click", (event)=>{
            shipMethod ="none";
            return ship;
         }
+
+        // Sending value got to shipping and handling section
         shipphandle.value = `$${ship}`;
-        
-        var total =parseFloat((cost + tax) + ship).toFixed(2);
+
+        // Calculating the total
+        var total =parseFloat(cost + tax + ship).toFixed(2);
         document.getElementById('toatlcost').value = `$${total}`;
         console.log( total);
 
